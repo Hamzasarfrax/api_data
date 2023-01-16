@@ -19,7 +19,7 @@ class:String
 // });
 app.get('/', (req, res) => {
 
- res.send("this is working")
+  res.json({ message: "Hello, World!" });
   });
 app.get('/users', (req, res) => {
 YourModel.find({},(err,user)=>{
@@ -79,4 +79,7 @@ app.delete('/users/:name', (req, res) => {
 });
 
 
-app.listen(3000, () => console.log('Server started on port 3000'));
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
+  console.log(`API listening on port ${port}`);
+});
